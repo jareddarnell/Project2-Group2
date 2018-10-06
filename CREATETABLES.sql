@@ -44,7 +44,9 @@ CREATE TABLE [Sites]
 	[Table] BIT NOT NULL DEFAULT 0,
 	[Covered] BIT NOT NULL DEFAULT 0,
 	[Shade] BIT NOT NULL DEFAULT 0,
-	[Picture] VARBINARY(MAX) --https://www.c-sharpcorner.com/article/how-should-we-store-images-and-blob-files-in-sql-server/
+	[Picture] VARBINARY(MAX), --https://www.c-sharpcorner.com/article/how-should-we-store-images-and-blob-files-in-sql-server/
+	[Electricity] BIT NOT NULL DEFAULT 1,
+	[PotableWater] BIT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE [Holidays]
