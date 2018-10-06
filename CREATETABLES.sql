@@ -108,3 +108,13 @@ ALTER TABLE [Hosts]
 ADD FOREIGN KEY ([CampgroundID]) REFERENCES [Campgrounds]([CampgroundID])
 
 --Data Insertion
+
+
+--Drop Tables
+--DROP TABLE [Activities]
+--DROP TABLE [Campgrounds]
+--DROP TABLE [Sites]
+--DROP TABLE [Holidays]
+--DROP TABLE [Users]
+--DROP TABLE [Reservations]
+--DROP TABLE [Hosts]
