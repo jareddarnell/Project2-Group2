@@ -191,6 +191,21 @@ VALUES
 
 SET IDENTITY_INSERT [Sites] OFF;
 
+SET IDENTITY_INSERT [Hosts] ON;
+
+INSERT INTO [Hosts]
+(
+	[HostID], 
+	[CampgroundID],
+	[FirstName],
+	[LastName],
+	[CellPhoneNumber]
+)
+VALUES
+	('1','1','Joe','Bob','888-169-9973'); --Referencing Redfish Lake CampgroundID 1
+
+SET IDENTITY_INSERT [Hosts] OFF;
+
 /*
 Drop Tables
 DROP TABLE [Activities]
