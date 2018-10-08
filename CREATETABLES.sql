@@ -132,7 +132,7 @@ INSERT INTO [Activities]
 	[HorseBackRiding]
 )
 VALUES
-	('1','1','0','1','1','1','1','0','1'); -- Redfish Lake using ActivitiesID 1 and CampgroundID 1
+	('1','1','0','1','1','1','1','0','1'); --Referencing Redfish Lake CampgroundID 1
 
 SET IDENTITY_INSERT [Activites] OFF;
 
@@ -151,9 +151,45 @@ INSERT INTO [Campgrounds]
 	[AvailableEndDate]
 )
 VALUES
-	('1','Redfish Lake Outlet Campground','44.141250, -114.911141','Subarctic','1','0','1','03-Mar-18','07-Oct-18'); -- Redfish Lake using CampgroundID 1
+	('1','Redfish Lake Outlet Campground','44.141250, -114.911141','Subarctic','1','0','1','03-Mar-18','07-Oct-18'); --Redfish Lake using CampgroundID 1
 
 SET IDENTITY_INSERT [Campgrounds] OFF;
+
+SET IDENTITY_INSERT [Sites] ON;
+
+INSERT INTO [Sites]
+(
+	[SiteID],
+	[CampgroundID],
+	[SiteNumber],
+	[Functional],
+	[Price], 
+	[ParkingSpots],
+	[Capacity],
+	[Tent],
+	[Trailer], 
+	[WaterAccess], 
+	[Firepit], 
+	[Table],
+	[Covered], 
+	[Shade],
+	[Picture],
+	[Electricity],
+	[PotableWater]
+)
+VALUES
+	('1','1','2','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('2','1','3','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('3','1','4','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('4','1','5','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('5','1','6','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('6','1','7','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('7','1','8','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('8','1','9','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('9','1','10','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('10','1','11','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'); --Referencing Redfish Lake CampgroundID 1
+
+SET IDENTITY_INSERT [Sites] OFF;
 
 /*
 Drop Tables
