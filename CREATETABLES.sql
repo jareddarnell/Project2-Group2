@@ -224,6 +224,23 @@ VALUES
 
 SET IDENTITY_INSERT [Users] OFF;
 
+SET IDENTITY_INSERT [Reservations] ON;
+
+INSERT INTO [Reservations]
+(
+	[ReservationID],
+	[UserID],
+	[SiteID],
+	[StartDate],
+	[EndDate] 
+)
+VALUES
+	('1','1','1','01-Apr-18','08-Apr-18'), --Referencing Redfish Lake CampgroundID 1
+	('2','2','3','18-Jun-18','25-Jun-18'), --Referencing Redfish Lake CampgroundID 1
+	('3','3','6','23-Sep-18','25-Sep-18'); --Referencing Redfish Lake CampgroundID 1
+
+SET IDENTITY_INSERT [Reservations] OFF;
+
 /*
 Drop Tables
 DROP TABLE [Activities]
