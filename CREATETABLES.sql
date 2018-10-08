@@ -206,6 +206,24 @@ VALUES
 
 SET IDENTITY_INSERT [Hosts] OFF;
 
+SET IDENTITY_INSERT [Users] ON;
+
+INSERT INTO [Users]
+(
+	[UserID],
+	[CampgroundID],
+	[FirstName],
+	[LastName],
+	[CellPhoneNumber],
+	[Email]
+)
+VALUES
+	('1','1','Some','Guy','926-999-1248','someguy@guymail.com'), --Referencing Redfish Lake CampgroundID 1
+	('2','1','Who','That','265-684-1325','whothat@newmail.com'), --Referencing Redfish Lake CampgroundID 1
+	('3','1','Mary','Sue','213-364-3145','marysue@suemary.com'); --Referencing Redfish Lake CampgroundID 1
+
+SET IDENTITY_INSERT [Users] OFF;
+
 /*
 Drop Tables
 DROP TABLE [Activities]
