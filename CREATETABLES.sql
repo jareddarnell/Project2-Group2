@@ -136,6 +136,25 @@ VALUES
 
 SET IDENTITY_INSERT [Activites] OFF;
 
+SET IDENTITY_INSERT [Campgrounds] ON;
+
+INSERT INTO [Campgrounds]
+(
+	[CampgroundID],
+	[Name],
+	[Location],
+	[Climate],
+	[ExtraParkingSpots],
+	[VaultToilets],
+	[FlushToilets],
+	[AvailableStartDate],
+	[AvailableEndDate]
+)
+VALUES
+	('1','Redfish Lake Outlet Campground','44.141250, -114.911141','Subarctic','1','0','1','03-Mar-18','07-Oct-18'); -- Redfish Lake using CampgroundID 1
+
+SET IDENTITY_INSERT [Campgrounds] OFF;
+
 /*
 Drop Tables
 DROP TABLE [Activities]
