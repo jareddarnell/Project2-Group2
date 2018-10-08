@@ -1,3 +1,9 @@
+/*
+Assignment 2 - Group 2
+Quin Dixon, Jared Darnell, Cole Smith
+CS 3550
+*/
+
 /* This is the document for creating the tables and insert the sample data */
 
 --Table Creation
@@ -86,6 +92,7 @@ CREATE TABLE [Hosts]
 	[CellPhoneNumber] VARCHAR(15) NOT NULL
 );
 
+
 --Table Alteration
 
 ALTER TABLE [Activities]
@@ -107,14 +114,35 @@ ADD FOREIGN KEY ([SiteID]) REFERENCES [Sites]([SiteID]),
 ALTER TABLE [Hosts]
 ADD FOREIGN KEY ([CampgroundID]) REFERENCES [Campgrounds]([CampgroundID])
 
+
 --Data Insertion
 
+SET IDENTITY_INSERT [Activites] ON;
 
---Drop Tables
---DROP TABLE [Activities]
---DROP TABLE [Campgrounds]
---DROP TABLE [Sites]
---DROP TABLE [Holidays]
---DROP TABLE [Users]
---DROP TABLE [Reservations]
---DROP TABLE [Hosts]
+INSERT INTO [Activities]
+(
+	[ActivitiesID],
+	[CampgroundID],
+	[ATVRiding],
+	[Fishing],
+	[Hiking],
+	[Boating],
+	[Swimming],
+	[Hunting],
+	[HorseBackRiding]
+)
+VALUES
+	('1','1','0','1','1','1','1','0','1'); -- Redfish Lake using ActivitiesID 1 and CampgroundID 1
+
+SET IDENTITY_INSERT [Activites] OFF;
+
+/*
+Drop Tables
+DROP TABLE [Activities]
+DROP TABLE [Campgrounds]
+DROP TABLE [Sites]
+DROP TABLE [Holidays]
+DROP TABLE [Users]
+DROP TABLE [Reservations]
+DROP TABLE [Hosts]
+*/
