@@ -132,7 +132,8 @@ INSERT INTO [Activities]
 	[HorseBackRiding]
 )
 VALUES
-	('1','1','0','1','1','1','1','0','1'); --Referencing Redfish Lake CampgroundID 1
+	('1','1','0','1','1','1','1','0','1'), --Referencing Redfish Lake CampgroundID 1
+	('2','2','0','1','1','0','0','0','1'); --Refrences Madison Campground CampgroundID 2
 
 SET IDENTITY_INSERT [Activites] OFF;
 
@@ -151,7 +152,8 @@ INSERT INTO [Campgrounds]
 	[AvailableEndDate]
 )
 VALUES
-	('1','Redfish Lake Outlet Campground','44.141250, -114.911141','Subarctic','1','0','1','03-Mar-18','07-Oct-18'); --Redfish Lake using CampgroundID 1
+	('1','Redfish Lake Outlet Campground','44.141250, -114.911141','Subarctic','1','0','1','03-Mar-18','07-Oct-18'), --Redfish Lake using CampgroundID 1
+	('2','Madison Campground','38.725,51.687','Subarctic','0','0','1','27-Apr-18', '14-Oct-18'); --Madison Campground CampgroundID 2
 
 SET IDENTITY_INSERT [Campgrounds] OFF;
 
@@ -187,7 +189,12 @@ VALUES
 	('7','1','8','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
 	('8','1','9','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
 	('9','1','10','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('10','1','11','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'); --Referencing Redfish Lake CampgroundID 1
+	('10','1','11','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
+	('11','2','1','0','25.25','2','6','1','0','1','1','0','0','1','0','1','1111111110100101111110100111011110111111'), --Referencing Madison Campground CampgroundID 2
+    ('12','2','2','1','25.25','2','8','1','0','1','0','1','0','1','0','1','0001111110100101111110100111011110111111'), --Referencing Madison Campground CampgroundID 2
+    ('13','2','3','0','25.25','4','16','1','1','1','0','0','0','1','1','1','1111111110100101111110100111011110110100'), --Referencing Madison Campground CampgroundID 2
+    ('14','2','4','1','25.25','4','16','1','1','1','0','1','0','1','1','1','1111111110100101111110100111011110111111'), --Referencing Madison Campground CampgroundID 2
+    ('15','2','5','1','25.25','4','18','1','1','1','0','1','0','1','1','1','1111111110100101111110100111011110111111'); --Referencing Madison Campground CampgroundID 2
 
 SET IDENTITY_INSERT [Sites] OFF;
 
@@ -202,7 +209,8 @@ INSERT INTO [Hosts]
 	[CellPhoneNumber]
 )
 VALUES
-	('1','1','Joe','Bob','888-169-9973'); --Referencing Redfish Lake CampgroundID 1
+	('1','1','Joe','Bob','888-169-9973'), --Referencing Redfish Lake CampgroundID 1
+	('2','2','Bill','Thompson', '801-616-3315'); --Referencing Madison Campground CampgroundID 2
 
 SET IDENTITY_INSERT [Hosts] OFF;
 
@@ -220,7 +228,10 @@ INSERT INTO [Users]
 VALUES
 	('1','1','Some','Guy','926-999-1248','someguy@guymail.com'), --Referencing Redfish Lake CampgroundID 1
 	('2','1','Who','That','265-684-1325','whothat@newmail.com'), --Referencing Redfish Lake CampgroundID 1
-	('3','1','Mary','Sue','213-364-3145','marysue@suemary.com'); --Referencing Redfish Lake CampgroundID 1
+	('3','1','Mary','Sue','213-364-3145','marysue@suemary.com'), --Referencing Redfish Lake CampgroundID 1
+	('4','2','Jane','Hills','459-296-4895','jhills@gmail.com'), --Referencing Madison Campground CampgroundID 2
+    ('5','2','Frank','Harris','212-515-6261','frankharris36@yahoo.com'), --Referencing Madison Campground CampgroundID 2
+    ('6','2','Jack','Adams','841-149-1632','jackjadams@outlook.com'); --Referencing Madison Campground CampgroundID 2
 
 SET IDENTITY_INSERT [Users] OFF;
 
@@ -235,9 +246,12 @@ INSERT INTO [Reservations]
 	[EndDate] 
 )
 VALUES
-	('1','1','1','01-Apr-18','08-Apr-18'), --Referencing Redfish Lake CampgroundID 1
-	('2','2','3','18-Jun-18','25-Jun-18'), --Referencing Redfish Lake CampgroundID 1
-	('3','3','6','23-Sep-18','25-Sep-18'); --Referencing Redfish Lake CampgroundID 1
+	('1','1','1','01-Apr-18','08-Apr-18'),
+	('2','2','3','18-Jun-18','25-Jun-18'),
+	('3','3','6','23-Sep-18','25-Sep-18'),
+	('4','4','15','9-Oct-18','11-Oct-18'),
+    ('5','5','12','07-Oct-18','10-Oct-18'),
+    ('6','6','13','08-Oct-18','10-Oct-18');
 
 SET IDENTITY_INSERT [Reservations] OFF;
 
