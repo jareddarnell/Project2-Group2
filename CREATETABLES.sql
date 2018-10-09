@@ -80,7 +80,8 @@ CREATE TABLE [Reservations]
 	[UserID] INT NOT NULL, 
 	[SiteID] INT NOT NULL,
 	[StartDate] DATE NOT NULL,
-	[EndDate] DATE NOT NULL
+	[EndDate] DATE NOT NULL,
+	[TotalPrice] MONEY NOT NULL
 );
 
 CREATE TABLE [Hosts]
@@ -243,15 +244,16 @@ INSERT INTO [Reservations]
 	[UserID],
 	[SiteID],
 	[StartDate],
-	[EndDate] 
+	[EndDate],
+	[TotalPrice]
 )
 VALUES
-	('1','1','1','01-Apr-18','08-Apr-18'),
-	('2','2','3','18-Jun-18','25-Jun-18'),
-	('3','3','6','23-Sep-18','25-Sep-18'),
-	('4','4','15','9-Oct-18','11-Oct-18'),
-    ('5','5','12','07-Oct-18','10-Oct-18'),
-    ('6','6','13','08-Oct-18','10-Oct-18');
+	('1','1','1','01-Apr-18','08-Apr-18','266.64'),
+	('2','2','3','18-Jun-18','25-Jun-18','133.36'),
+	('3','3','6','23-Sep-18','25-Sep-18','99.99'),
+	('4','4','15','9-Oct-18','11-Oct-18','75.75'),
+    ('5','5','12','07-Oct-18','10-Oct-18','101.00'),
+    ('6','6','13','08-Oct-18','10-Oct-18','75.75');
 
 SET IDENTITY_INSERT [Reservations] OFF;
 
