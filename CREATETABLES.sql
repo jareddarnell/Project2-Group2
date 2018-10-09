@@ -55,15 +55,6 @@ CREATE TABLE [Sites]
 	[PotableWater] BIT NOT NULL DEFAULT 1
 );
 
-CREATE TABLE [Holidays]
-(
-	[HolidayID] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	[CampgroundID] INT NOT NULL,
-	[Name] VARCHAR(50) NOT NULL,
-	[StartDate] DATE NOT NULL,
-	[EndDate] DATE NOT NULL
-);
-
 CREATE TABLE [Users]
 (
 	[UserID] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
@@ -100,9 +91,6 @@ ALTER TABLE [Activities]
 ADD FOREIGN KEY ([CampgroundID]) REFERENCES [Campgrounds]([CampgroundID])
 
 ALTER TABLE [Sites]
-ADD FOREIGN KEY ([CampgroundID]) REFERENCES [Campgrounds]([CampgroundID])
-
-ALTER TABLE [Holidays]
 ADD FOREIGN KEY ([CampgroundID]) REFERENCES [Campgrounds]([CampgroundID])
 
 ALTER TABLE [Users]
@@ -199,22 +187,6 @@ VALUES
 
 SET IDENTITY_INSERT [Sites] OFF;
 
-SET IDENTITY_INSERT [Hosts] ON;
-
-INSERT INTO [Hosts]
-(
-	[HostID], 
-	[CampgroundID],
-	[FirstName],
-	[LastName],
-	[CellPhoneNumber]
-)
-VALUES
-	('1','1','Joe','Bob','888-169-9973'), --Referencing Redfish Lake CampgroundID 1
-	('2','2','Bill','Thompson', '801-616-3315'); --Referencing Madison Campground CampgroundID 2
-
-SET IDENTITY_INSERT [Hosts] OFF;
-
 SET IDENTITY_INSERT [Users] ON;
 
 INSERT INTO [Users]
@@ -257,13 +229,27 @@ VALUES
 
 SET IDENTITY_INSERT [Reservations] OFF;
 
+SET IDENTITY_INSERT [Hosts] ON;
+
+INSERT INTO [Hosts]
+(
+	[HostID], 
+	[CampgroundID],
+	[FirstName],
+	[LastName],
+	[CellPhoneNumber]
+)
+VALUES
+	('1','1','Joe','Bob','888-169-9973'), --Referencing Redfish Lake CampgroundID 1
+	('2','2','Bill','Thompson', '801-616-3315'); --Referencing Madison Campground CampgroundID 2
+
+SET IDENTITY_INSERT [Hosts] OFF;
+
 /*
-Drop Tables
+DROP TABLE [Hosts]
+DROP TABLE [Reservations]
+DROP TABLE [Users]
+DROP TABLE [Sites]
 DROP TABLE [Activities]
 DROP TABLE [Campgrounds]
-DROP TABLE [Sites]
-DROP TABLE [Holidays]
-DROP TABLE [Users]
-DROP TABLE [Reservations]
-DROP TABLE [Hosts]
 */
