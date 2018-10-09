@@ -50,7 +50,7 @@ CREATE TABLE [Sites]
 	[Table] BIT NOT NULL DEFAULT 0,
 	[Covered] BIT NOT NULL DEFAULT 0,
 	[Shade] BIT NOT NULL DEFAULT 0,
-	[Picture] VARBINARY(MAX), --https://www.c-sharpcorner.com/article/how-should-we-store-images-and-blob-files-in-sql-server/
+	[Picture] VARBINARY(MAX) NULL, --https://www.c-sharpcorner.com/article/how-should-we-store-images-and-blob-files-in-sql-server/
 	[Electricity] BIT NOT NULL DEFAULT 1,
 	[PotableWater] BIT NOT NULL DEFAULT 1
 );
@@ -106,26 +106,6 @@ ADD FOREIGN KEY ([CampgroundID]) REFERENCES [Campgrounds]([CampgroundID])
 
 --Data Insertion
 
-SET IDENTITY_INSERT [Activites] ON;
-
-INSERT INTO [Activities]
-(
-	[ActivitiesID],
-	[CampgroundID],
-	[ATVRiding],
-	[Fishing],
-	[Hiking],
-	[Boating],
-	[Swimming],
-	[Hunting],
-	[HorseBackRiding]
-)
-VALUES
-	('1','1','0','1','1','1','1','0','1'), --Referencing Redfish Lake CampgroundID 1
-	('2','2','0','1','1','0','0','0','1'); --Refrences Madison Campground CampgroundID 2
-
-SET IDENTITY_INSERT [Activites] OFF;
-
 SET IDENTITY_INSERT [Campgrounds] ON;
 
 INSERT INTO [Campgrounds]
@@ -146,6 +126,26 @@ VALUES
 
 SET IDENTITY_INSERT [Campgrounds] OFF;
 
+SET IDENTITY_INSERT [Activities] ON;
+
+INSERT INTO [Activities]
+(
+	[ActivitiesID],
+	[CampgroundID],
+	[ATVRiding],
+	[Fishing],
+	[Hiking],
+	[Boating],
+	[Swimming],
+	[Hunting],
+	[HorseBackRiding]
+)
+VALUES
+	('1','1','0','1','1','1','1','0','1'), --Referencing Redfish Lake CampgroundID 1
+	('2','2','0','1','1','0','0','0','1'); --Refrences Madison Campground CampgroundID 2
+
+SET IDENTITY_INSERT [Activities] OFF;
+
 SET IDENTITY_INSERT [Sites] ON;
 
 INSERT INTO [Sites]
@@ -164,26 +164,26 @@ INSERT INTO [Sites]
 	[Table],
 	[Covered], 
 	[Shade],
-	[Picture],
 	[Electricity],
-	[PotableWater]
+	[PotableWater],
+	[Picture]
 )
 VALUES
-	('1','1','2','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('2','1','3','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('3','1','4','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('4','1','5','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('5','1','6','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('6','1','7','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('7','1','8','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('8','1','9','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('9','1','10','1','16.67','1','8','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('10','1','11','1','33.33','2','16','1','1','1','1','1','0','1','0','1','1111111110100101111111111111011110111111'), --Referencing Redfish Lake CampgroundID 1
-	('11','2','1','0','25.25','2','6','1','0','1','1','0','0','1','0','1','1111111110100101111110100111011110111111'), --Referencing Madison Campground CampgroundID 2
-    ('12','2','2','1','25.25','2','8','1','0','1','0','1','0','1','0','1','0001111110100101111110100111011110111111'), --Referencing Madison Campground CampgroundID 2
-    ('13','2','3','0','25.25','4','16','1','1','1','0','0','0','1','1','1','1111111110100101111110100111011110110100'), --Referencing Madison Campground CampgroundID 2
-    ('14','2','4','1','25.25','4','16','1','1','1','0','1','0','1','1','1','1111111110100101111110100111011110111111'), --Referencing Madison Campground CampgroundID 2
-    ('15','2','5','1','25.25','4','18','1','1','1','0','1','0','1','1','1','1111111110100101111110100111011110111111'); --Referencing Madison Campground CampgroundID 2
+	('1','1','2','1','33.33','2','16','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('2','1','3','1','16.67','1','8','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('3','1','4','1','16.67','1','8','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('4','1','5','1','16.67','1','8','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('5','1','6','1','16.67','1','8','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('6','1','7','1','33.33','2','16','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('7','1','8','1','16.67','1','8','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('8','1','9','1','33.33','2','16','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('9','1','10','1','16.67','1','8','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('10','1','11','1','33.33','2','16','1','1','1','1','1','0','1','0','1',NULL), --Referencing Redfish Lake CampgroundID 1
+	('11','2','1','0','25.25','2','6','1','0','1','1','0','0','1','0','1',NULL), --Referencing Madison Campground CampgroundID 2
+    ('12','2','2','1','25.25','2','8','1','0','1','0','1','0','1','0','1',NULL), --Referencing Madison Campground CampgroundID 2
+    ('13','2','3','0','25.25','4','16','1','1','1','0','0','0','1','1','1',NULL), --Referencing Madison Campground CampgroundID 2
+    ('14','2','4','1','25.25','4','16','1','1','1','0','1','0','1','1','1',NULL), --Referencing Madison Campground CampgroundID 2
+    ('15','2','5','1','25.25','4','18','1','1','1','0','1','0','1','1','1',NULL); --Referencing Madison Campground CampgroundID 2
 
 SET IDENTITY_INSERT [Sites] OFF;
 
