@@ -6,6 +6,15 @@ CS 3550
 
 /* This is the document for creating the tables and insert the sample data */
 
+/*
+DROP TABLE [Hosts]
+DROP TABLE [Reservations]
+DROP TABLE [Users]
+DROP TABLE [Sites]
+DROP TABLE [Activities]
+DROP TABLE [Campgrounds]
+*/
+
 --Table Creation
 
 CREATE TABLE [Activities]
@@ -72,7 +81,8 @@ CREATE TABLE [Reservations]
 	[SiteID] INT NOT NULL,
 	[StartDate] DATE NOT NULL,
 	[EndDate] DATE NOT NULL,
-	[TotalPrice] MONEY NOT NULL
+	[TotalPrice] MONEY NOT NULL,
+	[IcCanceled] BIT DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE [Hosts]
@@ -220,11 +230,11 @@ INSERT INTO [Reservations]
 	[TotalPrice]
 )
 VALUES
-	('1','1','1','01-Apr-18','08-Apr-18','266.64'),
+	('1','1','1','01-Jun-18','08-June-18','266.64'),
 	('2','2','3','18-Jun-18','25-Jun-18','133.36'),
 	('3','3','6','23-Sep-18','25-Sep-18','99.99'),
 	('4','4','15','9-Oct-18','11-Oct-18','75.75'),
-    ('5','5','12','07-Oct-18','10-Oct-18','101.00'),
+    ('5','5','12','07-Sep-18','10-Sep-18','101.00'),
     ('6','6','13','08-Oct-18','10-Oct-18','75.75');
 
 SET IDENTITY_INSERT [Reservations] OFF;
