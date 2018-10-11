@@ -43,6 +43,27 @@ VALUES
 SET IDENTITY_INSERT [Reservations] OFF;
 
 --Query that returns all camp spots for one of your campgrounds, showing the amenities and availability for each.  Write this query to cover one of the reservations you created above.
+SELECT
+	C.[Name] AS [Campground],
+	S.[SiteNumber],
+	S.[Functional],
+	S.[Price],
+	S.[ParkingSpots],
+	S.[Capacity],
+	S.[Tent],
+	S.[Trailer],
+	S.[WaterAccess],
+	S.[Firepit],
+	S.[Table],
+	S.[Covered],
+	S.[Shade],
+	S.[Electricity],
+	S.[PotableWater],
+	CAST(R.[StartDate] AS VARCHAR) + ' - ' + CAST(R.[EndDate] AS VARCHAR) AS Reserved
+FROM
+	[Sites] AS S
+	LEFT JOIN [Campgrounds] AS C ON C.[CampgroundID] = S.[CampgroundID]
+	LEFT JOIN [Reservations] AS R ON R.[SiteID] = S.[SiteID]
 
 --Query that shows how many days each spot for one of your campgrounds were reserved for a given date range.  Include the % utilization in this query (i.e. if the date range is 30 days and the spot was reserved for 15 days in that date range, utilization is 50%).
 
