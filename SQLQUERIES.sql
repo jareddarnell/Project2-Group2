@@ -43,29 +43,38 @@ VALUES
 SET IDENTITY_INSERT [Reservations] OFF;
 
 --Query that returns all camp spots for one of your campgrounds, showing the amenities and availability for each.  Write this query to cover one of the reservations you created above.
+DECLARE @StartDateRange DATE = '01-May-18'
+DECLARE @EndDateRange DATE = '31-May-18'
+
 SELECT
 	C.[Name] AS [Campground],
 	S.[SiteNumber],
+	'Is available between ' + CAST(@StartDateRange AS VARCHAR) + ' - ' + CAST(@EndDateRange AS VARCHAR) AS [Availability],
 	S.[Functional],
 	S.[Price],
 	S.[ParkingSpots],
 	S.[Capacity],
 	S.[Tent],
 	S.[Trailer],
-	S.[WaterAccess],
 	S.[Firepit],
 	S.[Table],
 	S.[Covered],
 	S.[Shade],
 	S.[Electricity],
-	S.[PotableWater],
-	CAST(R.[StartDate] AS VARCHAR) + ' - ' + CAST(R.[EndDate] AS VARCHAR) AS Reserved
+	S.[WaterAccess],
+	S.[PotableWater]
 FROM
 	[Sites] AS S
 	LEFT JOIN [Campgrounds] AS C ON C.[CampgroundID] = S.[CampgroundID]
 	LEFT JOIN [Reservations] AS R ON R.[SiteID] = S.[SiteID]
 WHERE
 	C.[CampgroundID] = 1 --Redfish Lake
+	AND
+	(
+		R.[StartDate] NOT BETWEEN @StartDateRange AND @EndDateRange
+		OR R.[StartDate] IS NULL
+	)
+	AND S.Functional = 1 --True
 ORDER BY
 	S.[SiteNumber]
 
@@ -87,7 +96,3 @@ ON s.CampgroundID = c.CampgroundID
 WHERE r.StartDate BETWEEN '2018-Jun-01' AND '2018-Sep-30'
 GROUP BY c.CampgroundID,Month(r.StartDate)
 Order BY CampgroundID;
-/*
-SELECT * FROM [Users]
-SELECT * FROM [Reservations]
-*/
