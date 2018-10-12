@@ -71,7 +71,10 @@ WHERE
 	C.[CampgroundID] = 1 --Redfish Lake
 	AND
 	(
-		R.[StartDate] NOT BETWEEN @StartDateRange AND @EndDateRange
+		(
+			R.[StartDate] NOT BETWEEN @StartDateRange AND @EndDateRange
+			AND R.[EndDate] NOT BETWEEN @StartDateRange AND @EndDateRange
+		)
 		OR R.[StartDate] IS NULL
 	)
 	AND S.[Functional] = 1 --True
