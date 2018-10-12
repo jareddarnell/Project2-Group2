@@ -74,7 +74,7 @@ WHERE
 		R.[StartDate] NOT BETWEEN @StartDateRange AND @EndDateRange
 		OR R.[StartDate] IS NULL
 	)
-	AND S.Functional = 1 --True
+	AND S.[Functional] = 1 --True
 ORDER BY
 	S.[SiteNumber]
 
