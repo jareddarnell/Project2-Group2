@@ -64,6 +64,10 @@ FROM
 	[Sites] AS S
 	LEFT JOIN [Campgrounds] AS C ON C.[CampgroundID] = S.[CampgroundID]
 	LEFT JOIN [Reservations] AS R ON R.[SiteID] = S.[SiteID]
+WHERE
+	C.[CampgroundID] = 1 --Redfish Lake
+ORDER BY
+	S.[SiteNumber]
 
 --Query that shows how many days each spot for one of your campgrounds were reserved for a given date range.  Include the % utilization in this query (i.e. if the date range is 30 days and the spot was reserved for 15 days in that date range, utilization is 50%).
 
