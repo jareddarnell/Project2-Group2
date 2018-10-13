@@ -88,12 +88,20 @@ DECLARE @DaysInSpecified DECIMAL = ( DATEDIFF(day, @SpecifiedStartDate, @Specifi
 
 SELECT
 	Q.SiteID,
-	Q.DaysUtilized,
-	( CONVERT(VARCHAR, (CONVERT(DECIMAL(10,2), ((Q.DaysUtilized / @DaysInSpecified) * 100)))) + '%' ) AS [Utilization]
+	CASE
+		WHEN Q.DaysUtilized < 0 THEN 0
+		ELSE Q.DaysUtilized
+	END AS [Days Utilized],
+	CASE
+		WHEN CONVERT(DECIMAL(10,2), ((Q.DaysUtilized / @DaysInSpecified) * 100)) < 0 THEN 0
+		ELSE CONVERT(DECIMAL(10,2), ((Q.DaysUtilized / @DaysInSpecified) * 100))
+	END AS [Utilization]
 FROM
 (
 	SELECT
 		S.SiteID,
+		Res.StartDate,
+		Res.EndDate,
 		CASE 
 			WHEN (Res.StartDate < @SpecifiedStartDate) THEN (Res.DaysReserved - ( DATEDIFF(day, Res.StartDate, @SpecifiedStartDate) + 1 ))
 			WHEN (Res.EndDate > @SpecifiedEndDate) THEN (( DATEDIFF(day, @SpecifiedEndDate, Res.EndDate) + 2) - Res.DaysReserved)
