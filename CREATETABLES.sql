@@ -82,7 +82,7 @@ CREATE TABLE [Reservations]
 	[StartDate] DATE NOT NULL,
 	[EndDate] DATE NOT NULL,
 	[TotalPrice] MONEY NOT NULL,
-	[IcCanceled] BIT DEFAULT 0 NOT NULL
+	[IsCanceled] BIT DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE [Hosts]
